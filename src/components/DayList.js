@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 const DayList = (props) => {
   return(
-    <Link to='/'>
-      <div>:;</div>
+    <Link to='/form'>
+      <div>
+        <button type="button">+</button>
+      </div>
     </Link>
   )
 }

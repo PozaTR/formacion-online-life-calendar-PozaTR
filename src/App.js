@@ -7,17 +7,29 @@ import './styles/components/app.scss';
 class App extends React.Component {
   constructor (props) {
     super(props)
+
+    this.state = {
+    }
+
+    this.onFeelingsSubmit = this.onFeelingsSubmit.bind(this);
+    
+  }
+
+  onFeelingsSubmit(newInformation) {
+    console.log(newInformation)
   }
 
   render() {
+    const { feeling } = this.props;
+
     return(
       <Switch >
-        <Route exact path="/" render={RouterProps => (  
-          <Edition match={RouterProps.match}/>
+        <Route exact path="/" render={RouterProps => (
+          <DayList match={RouterProps.match}/>  
         )}>
         </Route>
-        <Route path="/detail/:dayList" render={RouterProps => (
-          <DayList match={RouterProps.match}/>
+        <Route path="/form" render={RouterProps => (
+          <Edition match={RouterProps.match} onFeelingsSubmit={this.onFeelingsSubmit} feeling={feeling} />
         )}>
         </Route>
       </Switch>

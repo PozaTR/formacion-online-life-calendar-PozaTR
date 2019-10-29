@@ -1,64 +1,109 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Edition = (props) => {
-  return(
-    <React.Fragment>
-      <form className="form">
-        <div className="date">
-          <label className="date__label" htmlFor="date">Fecha</label>
-          <input 
-            className="date__input"
-            type="date"
-            id="date"
-            name="date"
-            min="2019-01-01"
-            max="2019-31-12"
-            step="1"/>
-        </div>
-        <p className="state">Estado</p>
-        <div className="state__container">
-          <div>
-            <label className="state__happy__label" htmlFor="happy">
-              <input
-                classname="state__happy__input"
-                id="happy"
-                type="radio"
-                value=""
-                name="state"
-              />
-              :)
-            </label>
-          </div>
-          <div>
-            <label classname="state__sad__label" htmlFor="sad">
-              <input
-                classname="state__sad__input"
-                id="sad"
-                type="radio"
-                value=""
-                name="state"
-              />
-              :(
-            </label>
-          </div>
-        </div>
-        <div className="message">
-          <label className="message__label" htmlFor="message">Mensaje</label>
-            <input 
-              classname="message__input"
-              type="text"
-              id="message"
-              name="message"
-              />
-        </div>
-      </form>
-      <Link classname="edition__link" to='/detail/:dayList'>
-        <button classname="save__button" type="button">Guardar</button>
-        <button className="cancel__button" type="button">Cancelar</button>
-      </Link>
-    </React.Fragment>
-  );
+class Edition extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      date: '01/01/2019',
+      feeling: 'happy',
+      message: ''
+    }
+
+    this.onChangeInfo = this.onChangeInfo.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+    onChangeInfo(event) {
+      const newInfo = event.currentTarget.value;
+      const infoKey = event.currentTarget.name;
+      console.log(event.currentTarget)
+      
+      this.setState({
+        [infoKey]: newInfo
+      })
+    }
+
+    onSubmit(event) {
+      const { onFeelingsSubmit } = this.props;
+      const { date, feeling, message } = this.state;
+      onFeelingsSubmit({ date, feeling, message });
+    }
+  
+    render() {
+      const { onChangeInfo, onSubmit } = this;
+      const { feeling, message, date } = this.state
+
+      return(
+        <React.Fragment>
+          <form className="form">
+            <div className="date">
+              <label className="date__label" htmlFor="date">Fecha</label>
+              <input 
+                className="date__input"
+                type="date"
+                id="date"
+                name="date"
+                min="01-01-2019"
+                max="31-12-2019"
+                step="1"
+                value={date}
+                onChange={onChangeInfo}
+                />
+            </div>
+            <p className="state">Estado</p>
+            <div className="state__container">
+              <div>
+                <label className="state__happy__label" htmlFor="happy">
+                  :)
+                </label>
+                <input
+                  className="state__happy__input"
+                  id="happy"
+                  type="radio"
+                  value="happy"
+                  name="feeling"
+                  defaultChecked
+                  onChange={onChangeInfo}
+                />
+              </div>
+              <div>
+                <label className="state__sad__label" htmlFor="sad">
+                  :(
+                </label>
+                <input
+                  className="state__sad__input"
+                  id="sad"
+                  type="radio"
+                  value="sad"
+                  name="feeling"
+                  onChange={onChangeInfo}
+                />
+              </div>
+            </div>
+           { feeling === 'happy'
+            ? <div className="message">
+                <label className="message__label" htmlFor="message"></label>
+                <input 
+                  className="message__input"
+                  type="text"
+                  id="message"
+                  name="message"
+                  placeholder="¿Por qué es un buen día?"
+                  onChange={onChangeInfo}
+                  value={message}
+                  />
+            </div>
+            : 'OHHH :( siento que hayas tenido un mal día'}
+          </form>
+          <button className="save__button" type="button" onClick={onSubmit}>Guardar</button>
+          <Link className="edition__link" to='/'>
+            <button className="cancel__button" type="button">Cancelar</button>
+          </Link>
+        </React.Fragment>
+      );
+    }
 }
 
 export default Edition;
