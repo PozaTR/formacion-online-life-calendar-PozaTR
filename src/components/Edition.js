@@ -25,10 +25,15 @@ class Edition extends React.Component {
       })
     }
 
-    onSubmit(event) {
+    onSubmit() {
       const { onFeelingsSubmit } = this.props;
       const { date, feeling, message } = this.state;
-      onFeelingsSubmit({ date, feeling, message });
+
+      onFeelingsSubmit({
+        date: date,
+        feeling: feeling,
+        message: (feeling === 'happy') ? message : ''
+      });
     }
   
     render() {
@@ -97,8 +102,8 @@ class Edition extends React.Component {
             </div>
             : 'OHHH :( siento que hayas tenido un mal día'}
           </form>
-          <button className="save__button" type="button" onClick={onSubmit}>Guardar</button>
           <Link className="edition__link" to='/'>
+            <button className="save__button" type="button" onClick={onSubmit}>Guardar</button>
             <button className="cancel__button" type="button">Cancelar</button>
           </Link>
         </React.Fragment>

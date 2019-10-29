@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
+      days: []
     }
 
     this.onFeelingsSubmit = this.onFeelingsSubmit.bind(this);
@@ -16,7 +17,17 @@ class App extends React.Component {
   }
 
   onFeelingsSubmit(newInformation) {
-    console.log(newInformation)
+    console.log(newInformation);
+    this.setState(prevState => {
+      const { days } = prevState
+
+      days.push(newInformation);
+
+      return {
+        ...prevState,
+        days: days
+      }
+    })
   }
 
   render() {
