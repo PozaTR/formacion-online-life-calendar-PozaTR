@@ -12,13 +12,27 @@ class App extends React.Component {
       days: []
     }
 
+    this.getUses = this.getUser.bind(this);
     this.onFeelingsSubmit = this.onFeelingsSubmit.bind(this);
     
   }
 
+  componentDidMount() {
+    this.getUser();
+  }
+
+  getUser() {
+    const ls = JSON.parse(localStorage.getItem('User'));
+    if (ls !== null) {
+      this.setState((prevState) => ({
+        days : [...prevState.days, ...ls.days]
+      }));
+    };
+  }
+
   onFeelingsSubmit(newInformation) {
     console.log(newInformation);
-    this.setState(prevState => {
+    this.setState((prevState => {
       const { days } = prevState
 
       days.push(newInformation);
@@ -27,7 +41,10 @@ class App extends React.Component {
         ...prevState,
         days: days
       }
-    })
+    }),
+    () => {
+      localStorage.setItem('User', JSON.stringify(this.state));
+    });
   }
 
   render() {
