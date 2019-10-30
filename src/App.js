@@ -32,11 +32,12 @@ class App extends React.Component {
 
   render() {
     const { feeling } = this.props;
+    const { days } = this.state;
 
     return(
       <Switch >
         <Route exact path="/" render={RouterProps => (
-          <DayList match={RouterProps.match}/>  
+          <DayList match={RouterProps.match} days={days}/>  
         )}>
         </Route>
         <Route path="/form" render={RouterProps => (
