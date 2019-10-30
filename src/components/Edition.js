@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/components/edition.scss';
 
 class Edition extends React.Component {
   constructor(props) {

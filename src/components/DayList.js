@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import happy from '../images/happy.jpg';
 import sad from '../images/sad.jpg';
+import '../styles/components/dayList.scss';
 
 const DayList = (props) => {
   const { days } = props;
