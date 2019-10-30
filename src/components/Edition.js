@@ -42,10 +42,10 @@ class Edition extends React.Component {
       const { feeling, message, date } = this.state
 
       return(
-        <React.Fragment>
+        <div className="edition">
           <form className="form">
             <div className="date">
-              <label className="date__label" htmlFor="date">Fecha</label>
+              <label className="date__label" htmlFor="date">fecha</label>
               <input 
                 className="date__input"
                 type="date"
@@ -58,34 +58,36 @@ class Edition extends React.Component {
                 onChange={onChangeInfo}
                 />
             </div>
-            <p className="state">Estado</p>
             <div className="state__container">
-              <div>
-                <label className="state__happy__label" htmlFor="happy">
-                  :)
-                </label>
-                <input
-                  className="state__happy__input"
-                  id="happy"
-                  type="radio"
-                  value="happy"
-                  name="feeling"
-                  defaultChecked
-                  onChange={onChangeInfo}
-                />
-              </div>
-              <div>
-                <label className="state__sad__label" htmlFor="sad">
-                  :(
-                </label>
-                <input
-                  className="state__sad__input"
-                  id="sad"
-                  type="radio"
-                  value="sad"
-                  name="feeling"
-                  onChange={onChangeInfo}
-                />
+              <p className="state">estado</p>
+              <div className="state__feelings">
+                <div className="state__feeling">
+                  <label className="state__label" htmlFor="happy">
+                    :)
+                  </label>
+                  <input
+                    className="state__input"
+                    id="happy"
+                    type="radio"
+                    value="happy"
+                    name="feeling"
+                    defaultChecked
+                    onChange={onChangeInfo}
+                  />
+                </div>
+                <div>
+                  <label className="state__label" htmlFor="sad">
+                    :(
+                  </label>
+                  <input
+                    className="state__input"
+                    id="sad"
+                    type="radio"
+                    value="sad"
+                    name="feeling"
+                    onChange={onChangeInfo}
+                  />
+                </div>
               </div>
             </div>
            { feeling === 'happy'
@@ -107,7 +109,7 @@ class Edition extends React.Component {
             <button className="save__button" type="button" onClick={onSubmit}>Guardar</button>
             <button className="cancel__button" type="button">Cancelar</button>
           </Link>
-        </React.Fragment>
+        </div>
       );
     }
 }

@@ -1,3 +1,5 @@
+@import './styles/core/variables';
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -5,5 +7,10 @@
 }
 
 body {
+  align-items: center;
+  background-color: $primary-light;
+  display: flex;
   font-family: 'Lato', sans-serif;
+  justify-content:center;
+  min-height: 100vh;
 }
