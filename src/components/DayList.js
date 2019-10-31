@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import happy from '../images/happy.jpg';
-import sad from '../images/sad.jpg';
 import '../styles/components/dayList.scss';
 
 const DayList = (props) => {
@@ -20,15 +18,16 @@ const DayList = (props) => {
                     <div classname="day__information" onClick={() => showMessage(day)}>
                       <p className="day__date">{day.date}</p>
                     {day.feeling === 'happy' 
-                    ? <img className="day__emoji" src={happy} alt="happy"/>
-                    : <img className="day__emoji" src={sad} alt="sad"/>
+                    ? <span class="day__emoji" role="img" aria-label="smiling">&#128515;</span>
+                    : <span class="day__emoji" role="img" aria-label="disappointed">&#128543;</span>
                     }
                     </div>
                   </li>
                 )}
           </ul>
         : <div className="dayList__message">
-            'Rellena tu calendario de emojis'
+            Rellena tu calendario de emojis
+            <span class="dayList__message__emoji" role="img" aria-label="calendar">&#128198;</span>
           </div>
       }
       </div>

@@ -11,6 +11,7 @@
   }
 
   &__list {
+    background-color: lighten($primary-extraLight, 5);
     border: 2px solid $primary;
     border-radius: 4px;
     color: $secondary;
@@ -26,8 +27,19 @@
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     }
   }
+
+  &__message {
+    &__emoji {
+      display: inline-block;
+      font-size: 20px;
+      padding-left: 8px;
+    }
+  }
 } 
 
 .day__emoji {
-  width: 90px;
+  display: inline-block;
+  font-size: 64px;
+  line-height: 1;
+  padding: 8px;
 }

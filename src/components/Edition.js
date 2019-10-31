@@ -104,7 +104,7 @@ class Edition extends React.Component {
                   />
               </div>
             : <div>
-                <p className="message__sad-day">OHHH :( siento que hayas tenido un mal día</p>
+                <p className="message__sad-day">OHHH <span role="img" aria-label="crying face">&#128546;</span>, siento que hayas tenido un mal día</p>
               </div>}
           </form>
           <Link className="edition__link" to='/'>
