@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Edition from './components/Edition';
 import DayList from './components/DayList';
+import PopUp from './components/PopUp';
 import './styles/components/app.scss';
 
 class App extends React.Component {
@@ -10,7 +11,8 @@ class App extends React.Component {
 
     this.state = {
       days: [],
-      selectedDay: {}
+      selectedDay: {},
+      isPopupShown: false
     }
 
     this.getUses = this.getUser.bind(this);
@@ -51,26 +53,35 @@ class App extends React.Component {
 
   showMessage(day) {
     this.setState({
-      selectedDay: day
+      selectedDay: day,
+      isPopupShown: true
     })
+    setTimeout(() => {
+      this.setState({
+        isPopupShown: false
+      })
+    }, 2000);
   }
 
   render() {
     const { feeling } = this.props;
-    const { days } = this.state;
+    const { days, isPopupShown, selectedDay } = this.state;
     const { onFeelingsSubmit, showMessage } = this;
 
     return(
-      <Switch >
-        <Route exact path="/" render={RouterProps => (
-          <DayList match={RouterProps.match} days={days} showMessage={showMessage} />  
-        )}>
-        </Route>
-        <Route path="/form" render={RouterProps => (
-          <Edition match={RouterProps.match} onFeelingsSubmit={onFeelingsSubmit} feeling={feeling} />
-        )}>
-        </Route>
-      </Switch>
+      <React.Fragment>
+        <Switch >
+          <Route exact path="/" render={RouterProps => (
+            <DayList match={RouterProps.match} days={days} showMessage={showMessage}/>  
+          )}>
+          </Route>
+          <Route path="/form" render={RouterProps => (
+            <Edition match={RouterProps.match} onFeelingsSubmit={onFeelingsSubmit} feeling={feeling} />
+          )}>
+          </Route>
+        </Switch>
+       { isPopupShown ? <PopUp title={selectedDay.date} message={selectedDay.message}/> : '' }
+      </React.Fragment>
     )
   }
 }

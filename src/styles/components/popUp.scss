@@ -1,0 +1,21 @@
+@import '../core/variables';
+
+.popup {
+  color: $primary;
+  background-color: lighten($primary-extraLight, 20);
+  border: 2px solid $primary-extraLight;
+  bottom: 8px;
+  max-width: 450px;
+  min-width: 300px;
+  padding: 16px;
+  position: fixed;
+  right: 8px;
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__message {
+    padding-top: 8px;
+  }
+}
