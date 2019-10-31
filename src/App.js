@@ -49,11 +49,9 @@ class App extends React.Component {
     });
   }
 
-  showMessage(event) {
-    const selectedDay = event.currentTarget
-
+  showMessage(day) {
     this.setState({
-      selectedDay: selectedDay
+      selectedDay: day
     })
   }
 

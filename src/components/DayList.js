@@ -17,16 +17,13 @@ const DayList = (props) => {
         ? <ul className="dayList__list">
               {days.map(day =>
                   <li className="dayList__day">
+                    <div classname="day__information" onClick={() => showMessage(day)}>
+                      <p className="day__date">{day.date}</p>
                     {day.feeling === 'happy' 
-                    ? <div classname="day__information" onClick={showMessage}>
-                        <p className="day__date">{day.date}</p>
-                        <img className="day__emoji" src={happy} alt="happy"/>
-                      </div>
-                    : <div>
-                        <p className="day__date">{day.date}</p>
-                        <img className="day__emoji" src={sad} alt="sad"/>
-                      </div>
+                    ? <img className="day__emoji" src={happy} alt="happy"/>
+                    : <img className="day__emoji" src={sad} alt="sad"/>
                     }
+                    </div>
                   </li>
                 )}
           </ul>
