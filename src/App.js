@@ -9,11 +9,13 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      days: []
+      days: [],
+      selectedDay: {}
     }
 
     this.getUses = this.getUser.bind(this);
     this.onFeelingsSubmit = this.onFeelingsSubmit.bind(this);
+    this.showMessage = this.showMessage.bind(this);
     
   }
 
@@ -47,18 +49,27 @@ class App extends React.Component {
     });
   }
 
+  showMessage(event) {
+    const selectedDay = event.currentTarget
+
+    this.setState({
+      selectedDay: selectedDay
+    })
+  }
+
   render() {
     const { feeling } = this.props;
     const { days } = this.state;
+    const { onFeelingsSubmit, showMessage } = this;
 
     return(
       <Switch >
         <Route exact path="/" render={RouterProps => (
-          <DayList match={RouterProps.match} days={days}/>  
+          <DayList match={RouterProps.match} days={days} showMessage={showMessage} />  
         )}>
         </Route>
         <Route path="/form" render={RouterProps => (
-          <Edition match={RouterProps.match} onFeelingsSubmit={this.onFeelingsSubmit} feeling={feeling} />
+          <Edition match={RouterProps.match} onFeelingsSubmit={onFeelingsSubmit} feeling={feeling} />
         )}>
         </Route>
       </Switch>

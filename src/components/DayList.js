@@ -5,8 +5,8 @@ import sad from '../images/sad.jpg';
 import '../styles/components/dayList.scss';
 
 const DayList = (props) => {
-  const { days } = props;
-  // const { feeling, message, date } = days;
+  const { days, showMessage } = props;
+
   return(
     <div className="dayList">
       <Link className="dayList__linK" to='/form'>
@@ -18,7 +18,7 @@ const DayList = (props) => {
               {days.map(day =>
                   <li className="dayList__day">
                     {day.feeling === 'happy' 
-                    ? <div classname="day__information">
+                    ? <div classname="day__information" onClick={showMessage}>
                         <p className="day__date">{day.date}</p>
                         <img className="day__emoji" src={happy} alt="happy"/>
                       </div>
