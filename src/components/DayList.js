@@ -8,20 +8,19 @@ const DayList = (props) => {
   const { days } = props;
   // const { feeling, message, date } = days;
   return(
-    <div>
-      <Link to='/form'>
-        <button type="button">+</button>
+    <div className="dayList">
+      <Link className="dayList__linK" to='/form'>
+        <button className="back__button" type="button">+</button>
       </Link>
-      <div>
+      <div className="dayList__calendar">
         {days.length 
-        ? <ul className="list">
+        ? <ul className="dayList__list">
               {days.map(day =>
-                  <li className="day">
+                  <li className="dayList__day">
                     {day.feeling === 'happy' 
                     ? <div classname="day__information">
                         <p className="day__date">{day.date}</p>
                         <img className="day__emoji" src={happy} alt="happy"/>
-                        <p className="day__message">{day.message}</p>
                       </div>
                     : <div>
                         <p className="day__date">{day.date}</p>
@@ -31,7 +30,7 @@ const DayList = (props) => {
                   </li>
                 )}
           </ul>
-        : <div>
+        : <div className="dayList__message">
             'Rellena tu calendario de emojis'
           </div>
       }

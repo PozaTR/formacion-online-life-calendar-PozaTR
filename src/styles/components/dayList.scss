@@ -1,0 +1,28 @@
+@import '../core/variables';
+
+.dayList {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__link {
+    display: inline-block;
+  }
+
+  &__list {
+    border: 2px solid $primary;
+    border-radius: 4px;
+    color: $secondary;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 8px;
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+  }
+} 
+
+.day__emoji {
+  width: 90px;
+}

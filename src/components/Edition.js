@@ -7,7 +7,7 @@ class Edition extends React.Component {
     super(props);
 
     this.state = {
-      date: '01/01/2019',
+      date: '2019/00/00',
       feeling: 'happy',
       message: ''
     }
