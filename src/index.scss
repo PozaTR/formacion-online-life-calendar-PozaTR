@@ -14,3 +14,32 @@ body {
   justify-content:center;
   min-height: 100vh;
 }
+
+.input {
+    border: 1px solid $secondary-light;
+    font-size: 14px;
+    height: 25px;;
+    min-width: 250px;
+    padding: 4px;
+    width: 90%;
+}
+
+.save__button {
+  color: $primary-extraLight;
+  background-color: $secondary-light;
+  border: 1px solid $primary-extraLight;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 4px;
+  padding: 6px;
+}
+
+.cancel__button {
+  color: $secondary-light;
+  background-color: $primary-extraLight;
+  border: 1px solid $secondary-light;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 4px;
+  padding: 6px;
+}

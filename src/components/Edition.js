@@ -47,7 +47,7 @@ class Edition extends React.Component {
             <div className="date">
               <label className="date__label" htmlFor="date">fecha</label>
               <input 
-                className="date__input"
+                className="date__input input"
                 type="date"
                 id="date"
                 name="date"
@@ -94,7 +94,7 @@ class Edition extends React.Component {
             ? <div className="message">
                 <label className="message__label" htmlFor="message"></label>
                 <input 
-                  className="message__input"
+                  className="message__input input"
                   type="text"
                   id="message"
                   name="message"
@@ -102,8 +102,10 @@ class Edition extends React.Component {
                   onChange={onChangeInfo}
                   value={message}
                   />
-            </div>
-            : 'OHHH :( siento que hayas tenido un mal día'}
+              </div>
+            : <div>
+                <p className="message__sad-day">OHHH :( siento que hayas tenido un mal día</p>
+              </div>}
           </form>
           <Link className="edition__link" to='/'>
             <button className="save__button" type="button" onClick={onSubmit}>Guardar</button>
