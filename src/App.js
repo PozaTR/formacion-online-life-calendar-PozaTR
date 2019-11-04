@@ -26,7 +26,7 @@ class App extends React.Component {
 
   getUser() {
     const ls = JSON.parse(localStorage.getItem('User'));
-    if (ls !== null) {
+    if (ls !== null && ls.days && ls.days.length) {
       this.setState((prevState) => ({
         days : [...prevState.days, ...ls.days]
       }));
