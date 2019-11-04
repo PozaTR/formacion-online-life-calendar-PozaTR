@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../styles/components/edition.scss';
 
@@ -113,6 +114,11 @@ class Edition extends React.Component {
         </div>
       );
     }
+}
+
+Edition.propTypes = {
+  onFeelingsSubmit: PropTypes.func.isRequired,
+  feeling: PropTypes.string
 }
 
 export default Edition;

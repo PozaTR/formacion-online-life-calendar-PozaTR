@@ -15,7 +15,6 @@ class App extends React.Component {
       isPopupShown: false
     }
 
-    this.getUses = this.getUser.bind(this);
     this.onFeelingsSubmit = this.onFeelingsSubmit.bind(this);
     this.showMessage = this.showMessage.bind(this);
     
