@@ -35,7 +35,6 @@ class App extends React.Component {
   }
 
   onFeelingsSubmit(newInformation) {
-    console.log(newInformation);
     this.setState((prevState => {
       const { days } = prevState
 

@@ -19,7 +19,6 @@ class Edition extends React.Component {
     onChangeInfo(event) {
       const newInfo = event.currentTarget.value;
       const infoKey = event.currentTarget.name;
-      console.log(event.currentTarget)
       
       this.setState({
         [infoKey]: newInfo

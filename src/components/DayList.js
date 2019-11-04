@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../styles/components/dayList.scss';
 
@@ -13,13 +14,13 @@ const DayList = (props) => {
       <div className="dayList__calendar">
         {days.length 
         ? <ul className="dayList__list">
-              {days.map(day =>
-                  <li className="dayList__day">
-                    <div classname="day__information" onClick={() => showMessage(day)}>
+              {days.map((day, index) =>
+                  <li key={`day-${index}`} className="dayList__day">
+                    <div className="day__information" onClick={() => showMessage(day)}>
                       <p className="day__date">{day.date}</p>
                     {day.feeling === 'happy' 
-                    ? <span class="day__emoji" role="img" aria-label="smiling">&#128515;</span>
-                    : <span class="day__emoji" role="img" aria-label="disappointed">&#128543;</span>
+                    ? <span className="day__emoji" role="img" aria-label="smiling">&#128515;</span>
+                    : <span className="day__emoji" role="img" aria-label="disappointed">&#128543;</span>
                     }
                     </div>
                   </li>
@@ -27,12 +28,17 @@ const DayList = (props) => {
           </ul>
         : <div className="dayList__message">
             Rellena tu calendario de emojis
-            <span class="dayList__message__emoji" role="img" aria-label="calendar">&#128198;</span>
+            <span className="dayList__message__emoji" role="img" aria-label="calendar">&#128198;</span>
           </div>
       }
       </div>
     </div>
   )
+}
+
+DayList.propTypes = {
+  days: PropTypes.arrayOf(PropTypes.object).isRequired,
+  showMessage: PropTypes.func.isRequired
 }
 
 export default DayList;
